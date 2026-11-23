@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10091f">
+<title>A Little Surprise for You ❤️</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Georgia,serif;
+ background:#10091f;
+ color:white;
+ overflow-x:hidden;
+ text-align:center;
+}
+button{font-family:inherit;cursor:pointer}
+.scene{
+ min-height:100vh;
+ display:none;
+ padding:35px 20px;
+ align-items:center;
+ justify-content:center;
+ flex-direction:column;
+ position:relative;
+ overflow:hidden;
+ background:radial-gradient(ellipse at top,#402052,#160e2b 55%,#090713);
+}
+.scene.active{display:flex;animation:appear 1s}
+@keyframes appear{
+ from{opacity:0;transform:translateY(12px)}
+ to{opacity:1;transform:translateY(0)}
+}
+.stars{
+ position:absolute;inset:0;pointer-events:none;
+ background-image:radial-gradient(#fff 1px,transparent 1px);
+ background-size:45px 45px;
+ opacity:.22;
+ animation:twinkle 4s infinite alternate;
+}
+@keyframes twinkle{to{opacity:.5}}
+h1{
+ font-size:clamp(35px,9vw,62px);
+ color:#ffe0f0;
+ text-shadow:0 0 25px #ff70ca;
+ margin:12px 0 25px;
+}
+h2{color:#ffc7e8;font-size:30px}
+p{line-height:1.8;color:#f4ddec}
+.small{font-size:14px;letter-spacing:3px;color:#e7b6df}
+.glow{
+ border:1px solid #ffb5ed;
+ background:linear-gradient(135deg,#f35bbd,#9b48d9);
+ color:white;padding:14px 27px;border-radius:35px;
+ box-shadow:0 0 25px #d94cc5;
+ font-size:16px;margin:12px;
+}
+.gift{
+ font-size:110px;
+ background:none;border:0;
+ filter:drop-shadow(0 0 25px #ff6edb);
+ animation:float 2s ease-in-out infinite;
+}
+@keyframes float{
+ 50%{transform:translateY(-17px) rotate(4deg)}
+}
+.card{
+ width:min(100%,440px);
+ padding:25px;
+ border:1px solid #e9a5dc66;
+ border-radius:25px;
+ background:#ffffff0c;
+ box-shadow:0 0 35px #c14bc533;
+ backdrop-filter:blur(10px);
+ margin:12px auto;
+}
+.gallery{
+ display:grid;grid-template-columns:1fr 1fr;
+ gap:12px;width:min(100%,440px);
+}
+.photo{
+ min-height:180px;border-radius:18px;
+ border:1px solid #f3a9db;
+ background:linear-gradient(145deg,#552b68,#bd589e);
+ display:flex;align-items:center;justify-content:center;
+ padding:12px;font-size:15px;
+}
+.envelope{
+ font-size:55px;background:#ffffff12;
+ border:1px solid #ffb7e8;border-radius:18px;
+ padding:15px;width:100%;margin:8px 0;
+ color:white;
+}
+.letter{display:none;text-align:left}
+.letter.show{display:block;animation:appear .7s}
+.cake{font-size:100px;filter:drop-shadow(0 0 25px #ff86c8)}
+footer{color:#d6a9d0;font-size:12px;margin-top:25px}
+</style>
+</head>
+
+<body>
+
+<!-- SCENE 1: SECRET ENTRY -->
+<section class="scene active" id="s1">
+ <div class="stars"></div>
+ <div class="small">A SPECIAL LITTLE WORLD</div>
+ <h1>A Little Surprise<br>for You</h1>
+ <button class="gift" onclick="openGift()">🎁</button>
+ <p>Tap the gift to open your surprise ✨</p>
+</section>
+
+<!-- SCENE 2: WELCOME -->
+<section class="scene" id="s2">
+ <div class="stars"></div>
+ <div class="small">WELCOME TO YOUR UNIVERSE</div>
+ <h1>It's All About You ❤️</h1>
+ <p>Today, this little universe belongs to you.</p>
+ <div style="font-size:65px">🌙 ✨ 💗</div>
+ <button class="glow" onclick="go(3)">Let's Begin →</button>
+</section>
+
+<!-- SCENE 3: PHOTO GALLERY -->
+<section class="scene" id="s3">
+ <div class="stars"></div>
+ <div class="small">A COLLECTION OF BEAUTIFUL MOMENTS</div>
+ <h1>Your Little Gallery</h1>
+ <p>Some pictures deserve their own little universe.</p>
+ <div class="gallery">
+  <div class="photo">Your Photo 1 📸</div>
+  <div class="photo">Your Photo 2 🌸</div>
+  <div class="photo">Your Photo 3 💗</div>
+  <div class="photo">Your Photo 4 ✨</div>
+ </div>
+ <p>We'll fill these spaces with your favourite pictures.</p>
+ <button class="glow" onclick="go(4)">A Little Story →</button>
+</section>
+
+<!-- SCENE 4: OUR STORY -->
+<section class="scene" id="s4">
+ <div class="stars"></div>
+ <div class="small">THE DAY IT ALL STARTED</div>
+ <h1>29.01.2026</h1>
+ <div class="card">
+  <div style="font-size:45px">📱 ❤️</div>
+  <h2>A Random Hello...</h2>
+  <p>Who knew that a simple connection on Instagram could become such a special part of life?</p>
+  <p>Some beginnings are small, but the feelings they bring can be beautiful.</p>
+ </div>
+ <button class="glow" onclick="go(5)">Open Your Letters →</button>
+</section>
+
+<!-- SCENE 5: SECRET LETTERS -->
+<section class="scene" id="s5">
+ <div class="stars"></div>
+ <div class="small">THREE LITTLE SECRETS</div>
+ <h1>Open When You Want 💌</h1>
+
+ <button class="envelope" onclick="letter(1)">💌 Letter One</button>
+ <div class="card letter" id="l1">
+  <h2>A Little Reminder</h2>
+  <p>You are someone truly special. Never forget how much happiness your presence can bring. ❤️</p>
+ </div>
+
+ <button class="envelope" onclick="letter(2)">💌 Letter Two</button>
+ <div class="card letter" id="l2">
+  <h2>A Little Smile</h2>
+  <p>I hope this little surprise brings a beautiful smile to your face today. You deserve happiness. 🌸</p>
+ </div>
+
+ <button class="envelope" onclick="letter(3)">💌 Letter Three</button>
+ <div class="card letter" id="l3">
+  <h2>One Special Wish</h2>
+  <p>May your life always be filled with love, laughter, beautiful dreams and countless reasons to smile. ✨</p>
+ </div>
+
+ <button class="glow" onclick="go(6)">The Final Surprise →</button>
+</section>
+
+<!-- SCENE 6: BIRTHDAY FINALE -->
+<section class="scene" id="s6">
+ <div class="stars"></div>
+ <div class="small">TODAY IS YOUR DAY</div>
+ <h1>Happy Birthday! 🎂</h1>
+ <div class="cake">🎂</div>
+ <div class="card">
+  <h2>26 November ❤️</h2>
+  <p>May every new day bring you closer to your dreams.</p>
+  <p>Keep shining, keep smiling and always remember how special you are.</p>
+  <h2>With lots of love 💗</h2>
+  <p>Someone who is lucky to know you.</p>
+ </div>
+ <button class="glow" onclick="celebrate()">Make a Wish ✨</button>
+ <footer>Made with love, just for you ❤️</footer>
+</section>
+
+<script>
+function go(n){
+ document.querySelectorAll('.scene').forEach(s=>s.classList.remove('active'));
+ document.getElementById('s'+n).classList.add('active');
+ window.scrollTo(0,0);
+}
+function openGift(){
+ go(2);
+}
+function letter(n){
+ const el=document.getElementById('l'+n);
+ el.classList.toggle('show');
+}
+function celebrate(){
+ for(let i=0;i<90;i++){
+  const e=document.createElement('div');
+  e.textContent=['✨','💗','🎉','🌸','⭐'][Math.floor(Math.random()*5)];
+  e.style.position='fixed';
+  e.style.left=Math.random()*100+'vw';
+  e.style.top='-30px';
+  e.style.fontSize=(15+Math.random()*20)+'px';
+  e.style.zIndex=999;
+  e.style.pointerEvents='none';
+  document.body.appendChild(e);
+  const x=(Math.random()-.5)*180;
+  const y=window.innerHeight+100;
+  const a=e.animate([
+   {transform:'translate(0,0) rotate(0deg)',opacity:1},
+   {transform:`translate(${x}px,${y}px) rotate(500deg)`,opacity:0}
+  ],{duration:2200+Math.random()*1300});
+  a.onfinish=()=>e.remove();
+ }
+}
+</script>
+</body>
+</html>
